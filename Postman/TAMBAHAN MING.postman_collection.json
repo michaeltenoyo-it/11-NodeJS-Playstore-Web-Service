@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "40623c36-2cc4-430b-8891-978858c4eb50",
+		"name": "TAMBAHAN MING",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET App Recommendation TESTING",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bd528786-7675-4c86-b227-81b88e0dffb3",
+						"exec": [
+							"let queue = pm.environment.get(\"post_review\");\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url: \"localhost:3000/api/MC/login\",\r",
+							"    method: \"POST\",\r",
+							"    body: {\r",
+							"        mode: \"urlencoded\",\r",
+							"        urlencoded: [\r",
+							"            {key:\"email\", value:\"ming@gmail.com\", disabled:false},\r",
+							"            {key:\"password\", value:\"ming123\", disabled:false}\r",
+							"        ]\r",
+							"    }\r",
+							"}, function (err, response) {\r",
+							"    pm.environment.set(\"post_data_apikey\", response.text());\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e44ecc43-2aea-46eb-aac8-2594b9dc38ff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"tests[\"Data response lebih dari 0\"] = pm.response.json().length > 0;\r",
+							"tests[\"Data response tidak ditemukan\"] = pm.response.json().length <= 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"type": "text",
+						"value": "{{post_data_apikey}}"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/mitchell/recommendation",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mitchell",
+						"recommendation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET App Recommendation DOC",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MTg2MDE2NCwiZXhwIjoxNTkxODYzNzY0fQ.c56OBYSJm3EK-vXWrLwtMMTEkwCwNU9AmGxJ31HP4Is"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/mitchell/recommendation",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mitchell",
+						"recommendation"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

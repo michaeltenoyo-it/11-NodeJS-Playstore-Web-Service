@@ -1,0 +1,1418 @@
+{
+	"info": {
+		"_postman_id": "2104ef42-7066-4ea4-9506-9614fedb3d97",
+		"name": "Proyek_SOA_Appmonsta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login/Register",
+			"item": [
+				{
+					"name": "User Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "07f8dc06-892a-4ffc-b9ef-12c99821324b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e5e95aa5-13b9-43cd-a1e8-80f29f4f1837",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "Mike",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "michael123@mail.com",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4e2da43a-27ef-4ad7-aeca-ed12893b0c3b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e44fb7ab-c508-47ee-8527-7d9b0e1f9c09",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "michael.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "User Update Profile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b774e3dc-e263-4016-9d87-d067ef8b8aad",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d4eb5d7-8df5-498d-a8f4-d3c6fc1928d9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pY2hhZWwuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MTU0NDQwOSwiZXhwIjoxNTkxNTQ4MDA5fQ.eFlvoqU06SUSGxifUhaH9wS7H_jHE-qb8w0egxXJO5I"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "michael.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/michael/Pictures/30990-cddvd-hatsune-miku-magical-mirai-2019-official-album-limited-edition.jpg"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/profile/update_profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"update_profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Upgrade Premium",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "64379114-ba2c-45c0-9c01-fe3cb750244c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "82b76c73-c1f6-4e82-b36d-f4d8d0d1fc0d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "{{upgrade_premium_apikey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"credit_card_number\": \"4242424242424242\",\r\n    \"expired_month\": \"5\",\r\n    \"expired_year\": \"2021\",\r\n    \"cvc\": \"314\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/profile/upgrade_premium",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"upgrade_premium"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Application",
+			"item": [
+				{
+					"name": "Get App Detail",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "25aedc01-7149-4315-bac4-cca76dc0ddfd",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "dd58c370-878c-4774-9388-a00f4559bde6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"KTU IF lecture schedule\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should have publisher name MIK apps\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.publisher_name).to.eql(\"MIK apps\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/app?app_id=com.ktucalender",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"app"
+							],
+							"query": [
+								{
+									"key": "app_id",
+									"value": "com.ktucalender"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get App Recommendation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MTg2MDE2NCwiZXhwIjoxNTkxODYzNzY0fQ.c56OBYSJm3EK-vXWrLwtMMTEkwCwNU9AmGxJ31HP4Is"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/app/recommendation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"app",
+								"recommendation"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Wishlist",
+			"item": [
+				{
+					"name": "Show Wishlist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2a6f1ea7-6a44-465b-9c3a-20209e5187b6",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "566c7cd9-94ce-4554-bce5-ea64e9e4df2f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MTU0NTc3MywiZXhwIjoxNTkxNTQ5MzczfQ.juUA0dbNQzOoALTbwfEHQ0uVh7fHYaUCtB17iXP7LRc"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/wishlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Wishlist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bbb63af0-d05f-4040-b846-1b00bdb7d92b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d6e26045-8d13-464f-bd07-373e782c218f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MTU0NTg3MiwiZXhwIjoxNTkxNTQ5NDcyfQ.7XfMFD5sv22T2tF23pAWZ5OXiQgK6tyxF61bxS9cwRo"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "app_id",
+									"value": "com.radiosonline.sverigeradiofm",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/wishlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Wishlist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "05171dd9-26ac-46bf-84bf-e3553775c2c9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "88f983a3-5b32-4180-993e-2fccf53aa992",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MTU0NTg3MiwiZXhwIjoxNTkxNTQ5NDcyfQ.7XfMFD5sv22T2tF23pAWZ5OXiQgK6tyxF61bxS9cwRo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "app_id",
+									"value": "com.radiosonline.sverigeradiofm",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/wishlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Voting",
+			"item": [
+				{
+					"name": "Making Vote",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MDc0NjYwMSwiZXhwIjoxNTkwNzUwMjAxfQ.mkmPPQyBIjeQLoO-60GiliYHgsaGUnlh9WWmwae-lls",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"judul_vote\" : \"Anime greatest hits\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/voting/make_vote?id_app=com.hazelfunstudio.icecream.donut.maker,com.fungameco.klondike.solitaire",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"voting",
+								"make_vote"
+							],
+							"query": [
+								{
+									"key": "id_app",
+									"value": "com.hazelfunstudio.icecream.donut.maker,com.fungameco.klondike.solitaire"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Input Vote",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBvcG8uY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MDc1NTcyMCwiZXhwIjoxNTkwNzU5MzIwfQ.C1VsH6BnWVLkxsd0iDVr9vvZAjBnEahzV3_TH4g0-RY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_list_vote\" : 18,\n\t\"indeks_pilihan_vote\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/voting/input_vote",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"voting",
+								"input_vote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Get Ranking",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "93f7f6e4-10c9-493a-a54d-128fd8296744",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab61ec89-e241-4af1-94f2-8205077133d1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_list_ranking\": 18\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/voting/get_ranking_vote",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"voting",
+								"get_ranking_vote"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Add Post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "02fadb39-f5f9-4c92-9beb-584941443422",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d0d0695-eeac-47ae-83e2-7f96dd905d0c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"type": "text",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MTUzOTg3OSwiZXhwIjoxNTkxNTQzNDc5fQ.bGPGsGlwxzxiSbEylUjsR1qJzmw05dgeqynasnJc8CQ"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "app_id",
+									"value": "com.missuniverse.app",
+									"type": "text"
+								},
+								{
+									"key": "judul",
+									"value": "Vote This Girl!",
+									"type": "text"
+								},
+								{
+									"key": "caption",
+									"value": "Youngest miss universe 2020",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "{app_id:\"GLE231\",judul:\"Test Postingan\",caption:\"Halo Surabaya!\"}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "img_post",
+									"type": "file",
+									"src": "/C:/Users/fumin/Downloads/845dc3e86153cac3c428228eda011797.jpg"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/post/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8ddc14ae-ebd3-4b7b-98e4-a9d18abeb184",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b476339-53bf-47c7-af87-5663ff25e605",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{Insert your API KEY here}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/post/view?search=&id_app=&date=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"view"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "id_app",
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dislike Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{insert your API KEY here}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_post",
+									"value": "{{insert your ID POST here}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/post/dislike",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"dislike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "83a31ee4-bc04-4be9-8123-e7d3875fa2f2",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8b5afdf-20c9-4299-bdcf-40da4c575587",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{Insert your API KEY here}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_post",
+									"value": "{{Insert your ID POST here}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/post/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4f688ba9-f952-4b96-a020-64cb81319a78",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "77f41467-d9dc-4ae6-b086-ae411bba7d6d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{update_data_apikey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_post",
+									"value": "{{insert your ID POST here}}",
+									"type": "text"
+								},
+								{
+									"key": "caption",
+									"value": "Testing my new caption for my post",
+									"type": "text"
+								},
+								{
+									"key": "judul",
+									"value": "First Post",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/post/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "94e967e0-d411-405a-89c6-b64c60057286",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "497749ea-5bbf-41d7-89a4-cf46d79a31a7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{insert your API KEY here}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_post",
+									"value": "{{insert your ID POST here}}",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "Hello, this is my first comment",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/post/comment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8294e568-303b-427a-b677-ae280d8fca7c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{insert your API KEY here}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/post/mypost",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"mypost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{insert your API KEY here}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_post",
+									"value": "{{insert your ID POST here}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/post/get_review",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"get_review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{insert your API KEY here}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_post",
+									"value": "{{insert your ID POST here}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/post/like",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"like"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "Insert Rating",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjIzNjc2NiwiZXhwIjoxNTkyMjQwMzY2fQ._bc9XR9HO8NGPEIfg4RNSmpAhXktKhDMgCUkQBi6ogo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "appID",
+									"value": "com.ktucalender",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "Nice!",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/rating",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Rating",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjIzNjc2NiwiZXhwIjoxNTkyMjQwMzY2fQ._bc9XR9HO8NGPEIfg4RNSmpAhXktKhDMgCUkQBi6ogo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ratingID",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "Apik!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/rating",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rating By App or ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/rating?query=6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Rating By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjIzNjc2NiwiZXhwIjoxNTkyMjQwMzY2fQ._bc9XR9HO8NGPEIfg4RNSmpAhXktKhDMgCUkQBi6ogo"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ratingID",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/rating",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Like",
+			"item": [
+				{
+					"name": "Add Like on Rating",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjIzNjc2NiwiZXhwIjoxNTkyMjQwMzY2fQ._bc9XR9HO8NGPEIfg4RNSmpAhXktKhDMgCUkQBi6ogo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ratingID",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "Agree!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/like",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Like on Rating",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjI0MzkzMSwiZXhwIjoxNTkyMjQ3NTMxfQ.cMjWf5r9u88KjEO-OG04bO85ED_Ei93RvOaXE-ECts0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "likeID",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/like",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"like"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

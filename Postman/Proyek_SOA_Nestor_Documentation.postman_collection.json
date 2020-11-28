@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "8e315818-e5af-4738-a12e-66f62282d35d",
+		"name": "Proyek_SOA_Nestor_Documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Nestor - Insert Rating",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjIzNjc2NiwiZXhwIjoxNTkyMjQwMzY2fQ._bc9XR9HO8NGPEIfg4RNSmpAhXktKhDMgCUkQBi6ogo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "appID",
+							"value": "com.ktucalender",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "Nice!",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/nestor/rating",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nestor",
+						"rating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nestor - Edit Rating",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjIzNjc2NiwiZXhwIjoxNTkyMjQwMzY2fQ._bc9XR9HO8NGPEIfg4RNSmpAhXktKhDMgCUkQBi6ogo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ratingID",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "Apik!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/nestor/rating",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nestor",
+						"rating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nestor - Get Rating By App or ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/nestor/rating?query=6",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nestor",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nestor - Delete Rating By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjIzNjc2NiwiZXhwIjoxNTkyMjQwMzY2fQ._bc9XR9HO8NGPEIfg4RNSmpAhXktKhDMgCUkQBi6ogo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ratingID",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/nestor/rating",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nestor",
+						"rating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nestor - Add Like on Rating",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjIzNjc2NiwiZXhwIjoxNTkyMjQwMzY2fQ._bc9XR9HO8NGPEIfg4RNSmpAhXktKhDMgCUkQBi6ogo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ratingID",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "Agree!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/nestor/like",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nestor",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nestor - Delete Like on Rating",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmdAZ21haWwuY29tIiwibGV2ZWwiOjIsImlhdCI6MTU5MjI0MzkzMSwiZXhwIjoxNTkyMjQ3NTMxfQ.cMjWf5r9u88KjEO-OG04bO85ED_Ei93RvOaXE-ECts0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "likeID",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/nestor/like",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nestor",
+						"like"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

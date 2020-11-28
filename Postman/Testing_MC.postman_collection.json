@@ -1,0 +1,919 @@
+{
+	"info": {
+		"_postman_id": "8fe2a8a5-4d1e-404e-b320-197489cc3bc4",
+		"name": "Testing_MC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login/Register",
+			"item": [
+				{
+					"name": "User Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "609cf116-1c2c-4511-a490-265090008fe2",
+								"exec": [
+									"data = pm.environment.get(\"register\"); \r",
+									"if (!data || data.length <= 0) {\r",
+									"    data = [\r",
+									"        {\r",
+									"            \"register_username\": \"Mike\",\r",
+									"            \"register_password\": \"1234\",\r",
+									"            \"register_email\": \"michael123@mail.com\",\r",
+									"            \"register_status_code\": 200,\r",
+									"            \"register_body\": {\r",
+									"                \"message\": \"register berhasil\"\r",
+									"            }\r",
+									"        },\r",
+									"        {\r",
+									"            \"register_username\": \"Mike\",\r",
+									"            \"register_password\": \"1234\",\r",
+									"            \"register_email\": \"mike.com\",\r",
+									"            \"register_status_code\": 400,\r",
+									"            \"register_body\": {\r",
+									"                \"message\": \"register gagal email pernah digunakan\"\r",
+									"            }\r",
+									"        },\r",
+									"        {\r",
+									"            \"register_username\": \"\",\r",
+									"            \"register_password\": \"1234\",\r",
+									"            \"register_email\": \"michael.com\",\r",
+									"            \"register_status_code\": 400,\r",
+									"            \"register_body\": {\r",
+									"                \"message\": \"ada field yang tidak diisi\"\r",
+									"            }\r",
+									"        }\r",
+									"    ]\r",
+									"}\r",
+									"\r",
+									"let currentData = data.shift();\r",
+									"pm.environment.set(\"register_username\", currentData[\"register_username\"]);\r",
+									"pm.environment.set(\"register_password\", currentData[\"register_password\"]);\r",
+									"pm.environment.set(\"register_email\", currentData[\"register_email\"]);\r",
+									"pm.environment.set(\"register_status_code\", currentData[\"register_status_code\"]);\r",
+									"pm.environment.set(\"register_body\", currentData[\"register_body\"]);\r",
+									"pm.environment.set(\"register\", data);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a86048db-9326-4452-a4a9-b8410d487773",
+								"exec": [
+									"data = pm.environment.get(\"register\");\r",
+									"flag = false;\r",
+									"\r",
+									"if (data && data.length > 0) {\r",
+									"    postman.setNextRequest(\"User Register\");\r",
+									"} else {\r",
+									"    flag = true;\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is correct\", function () {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"register_status_code\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Returned data is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.eql(pm.variables.get(\"register_body\"));\r",
+									"});\r",
+									"\r",
+									"if (flag) {\r",
+									"    pm.environment.unset(\"register_username\");\r",
+									"    pm.environment.unset(\"register_password\");\r",
+									"    pm.environment.unset(\"register_email\");\r",
+									"    pm.environment.unset(\"register_status_code\");\r",
+									"    pm.environment.unset(\"register_body\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "{{register_username}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{register_password}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{register_email}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/mc/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mc",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "18931321-c0ca-4222-97f9-a15fd9e1e708",
+								"exec": [
+									"data = pm.environment.get(\"login\"); \r",
+									"if (!data || data.length <= 0) {\r",
+									"    data = [\r",
+									"        {\r",
+									"            \"login_email\": \"michael.com\",\r",
+									"            \"login_password\": \"1234\",\r",
+									"            \"login_status_code\": 200\r",
+									"        },\r",
+									"        {\r",
+									"            \"login_email\": \"xyz\",\r",
+									"            \"login_password\": \"1234\",\r",
+									"            \"login_status_code\": 400,\r",
+									"            \"login_body\": {\r",
+									"                \"message\": \"Login gagal user tidak ditemukan\"\r",
+									"            }\r",
+									"        }\r",
+									"    ]\r",
+									"}\r",
+									"\r",
+									"let currentData = data.shift();\r",
+									"pm.environment.set(\"login_email\", currentData[\"login_email\"]);\r",
+									"pm.environment.set(\"login_password\", currentData[\"login_password\"]);\r",
+									"pm.environment.set(\"login_status_code\", currentData[\"login_status_code\"]);\r",
+									"pm.environment.set(\"login_body\", currentData[\"login_body\"]);\r",
+									"pm.environment.set(\"login\", data);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "09841863-6107-4345-8633-af282595e225",
+								"exec": [
+									"data = pm.environment.get(\"login\");\r",
+									"flag = false;\r",
+									"\r",
+									"if (data && data.length > 0) {\r",
+									"    postman.setNextRequest(\"User Login\");\r",
+									"} else {\r",
+									"    flag = true;\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is correct\", function () {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"login_status_code\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Returned data is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.eql(pm.variables.get(\"login_body\"));\r",
+									"});\r",
+									"\r",
+									"if (flag) {\r",
+									"    pm.environment.unset(\"login_email\");\r",
+									"    pm.environment.unset(\"login_password\");\r",
+									"    pm.environment.unset(\"login_status_code\");\r",
+									"    pm.environment.unset(\"login_body\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{login_email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{login_password}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/mc/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mc",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "User Update Profile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9a8c0582-25af-4caa-b46b-777667c2fe0f",
+								"exec": [
+									"data = pm.environment.get(\"update_profile\"); \r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: \"localhost:3000/api/MC/login\",\r",
+									"    method: \"POST\",\r",
+									"    body: {\r",
+									"        mode: \"urlencoded\",\r",
+									"        urlencoded: [\r",
+									"            {key:\"email\", value:\"michael.com\", disabled:false},\r",
+									"            {key:\"password\", value:\"1234\", disabled:false}\r",
+									"        ]\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    pm.environment.set(\"update_profile_apikey\", response.text());\r",
+									"});\r",
+									"\r",
+									"if (!data || data.length <= 0) {\r",
+									"    data = [\r",
+									"        {\r",
+									"            \"update_profile_username\": \"michael.com\",\r",
+									"            \"update_profile_password\": \"1234\",\r",
+									"            \"update_profile_status_code\": 200,\r",
+									"            \"update_profile_body\": {\r",
+									"                \"message\": \"Profile berhasil di update\"\r",
+									"            }\r",
+									"        },\r",
+									"        {\r",
+									"            \"update_profile_username\": \"xyz\",\r",
+									"            \"update_profile_password\": \"1234\",\r",
+									"            \"update_profile_status_code\": 404,\r",
+									"            \"update_profile_body\": {\r",
+									"                \"message\": \"user dengan email tersebut tidak ditemukan\"\r",
+									"            }\r",
+									"        }\r",
+									"    ]\r",
+									"}\r",
+									"let currentData = data.shift();\r",
+									"pm.environment.set(\"update_profile_username\", currentData[\"update_profile_username\"]);\r",
+									"pm.environment.set(\"update_profile_password\", currentData[\"update_profile_password\"]);\r",
+									"pm.environment.set(\"update_profile_status_code\", currentData[\"update_profile_status_code\"]);\r",
+									"pm.environment.set(\"update_profile_body\", currentData[\"update_profile_body\"]);\r",
+									"pm.environment.set(\"update_profile\", data);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4b2f9768-24fa-4cc5-bc93-7a0c9c67aad0",
+								"exec": [
+									"data = pm.environment.get(\"update_profile\");\r",
+									"flag = false;\r",
+									"\r",
+									"if (data && data.length > 0) {\r",
+									"    postman.setNextRequest(\"User Update Profile\");\r",
+									"} else {\r",
+									"    flag = true;\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is correct\", function () {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"update_profile_status_code\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Returned data is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.eql(pm.variables.get(\"update_profile_body\"));\r",
+									"});\r",
+									"\r",
+									"if (flag) {\r",
+									"    pm.environment.unset(\"update_profile_username\");\r",
+									"    pm.environment.unset(\"update_profile_password\");\r",
+									"    pm.environment.unset(\"update_profile_status_code\");\r",
+									"    pm.environment.unset(\"update_profile_body\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "{{update_profile_apikey}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "{{update_profile_username}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{update_profile_password}}",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/michael/Pictures/30990-cddvd-hatsune-miku-magical-mirai-2019-official-album-limited-edition.jpg"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/mc/update_profile",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mc",
+								"update_profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Upgrade Premium",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8df03ef1-9f2f-4473-9adb-eb29121b1c6d",
+								"exec": [
+									"data = pm.environment.get(\"upgrade_premium\"); \r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: \"localhost:3000/api/MC/login\",\r",
+									"    method: \"POST\",\r",
+									"    body: {\r",
+									"        mode: \"urlencoded\",\r",
+									"        urlencoded: [\r",
+									"            {key:\"email\", value:\"michael.com\", disabled:false},\r",
+									"            {key:\"password\", value:\"1234\", disabled:false}\r",
+									"        ]\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    pm.environment.set(\"upgrade_premium_apikey\", response.text());\r",
+									"});\r",
+									"\r",
+									"if (!data || data.length <= 0) {\r",
+									"    data = [\r",
+									"        {\r",
+									"            \"upgrade_premium_credit_card_number\": \"4242424242424242\",\r",
+									"            \"upgrade_premium_expired_month\": \"5\",\r",
+									"            \"upgrade_premium_expired_year\": \"2021\",\r",
+									"            \"upgrade_premium_cvc\": \"314\",\r",
+									"            \"upgrade_premium_status_code\": 200,\r",
+									"            \"upgrade_premium_body\": {\r",
+									"                \"message\": \"Pembayaran telah berhasil dilakukan, anda telah menjadi premium member\"\r",
+									"            }\r",
+									"        },\r",
+									"        {\r",
+									"            \"upgrade_premium_credit_card_number\": \"4242424242424242\",\r",
+									"            \"upgrade_premium_expired_month\": \"5\",\r",
+									"            \"upgrade_premium_expired_year\": \"2021\",\r",
+									"            \"upgrade_premium_cvc\": \"314\",\r",
+									"            \"upgrade_premium_status_code\": 404,\r",
+									"            \"upgrade_premium_body\": {\r",
+									"                \"message\": \"user dengan email tersebut tidak ditemukan\"\r",
+									"            }\r",
+									"        }\r",
+									"    ]\r",
+									"}\r",
+									"let currentData = data.shift();\r",
+									"pm.environment.set(\"upgrade_premium_credit_card_number\", currentData[\"upgrade_premium_credit_card_number\"]);\r",
+									"pm.environment.set(\"upgrade_premium_expired_month\", currentData[\"upgrade_premium_expired_month\"]);\r",
+									"pm.environment.set(\"upgrade_premium_expired_year\", currentData[\"upgrade_premium_expired_year\"]);\r",
+									"pm.environment.set(\"upgrade_premium_cvc\", currentData[\"upgrade_premium_cvc\"]);\r",
+									"pm.environment.set(\"upgrade_premium_status_code\", currentData[\"upgrade_premium_status_code\"]);\r",
+									"pm.environment.set(\"upgrade_premium_body\", currentData[\"upgrade_premium_body\"]);\r",
+									"pm.environment.set(\"upgrade_premium\", data);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8c66ef4f-cf82-448b-a67a-d7e53ee309b6",
+								"exec": [
+									"data = pm.environment.get(\"upgrade_premium\");\r",
+									"flag = false;\r",
+									"\r",
+									"if (data && data.length > 0) {\r",
+									"    postman.setNextRequest(\"User Upgrade Premium\");\r",
+									"} else {\r",
+									"    flag = true;\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is correct\", function () {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"upgrade_premium_status_code\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Returned data is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.eql(pm.variables.get(\"upgrade_premium_body\"));\r",
+									"});\r",
+									"\r",
+									"if (flag) {\r",
+									"    pm.environment.unset(\"upgrade_premium_credit_card_number\");\r",
+									"    pm.environment.unset(\"upgrade_premium_expired_month\");\r",
+									"    pm.environment.unset(\"upgrade_premium_expired_year\");\r",
+									"    pm.environment.unset(\"upgrade_premium_cvc\");\r",
+									"    pm.environment.unset(\"upgrade_premium_status_code\");\r",
+									"    pm.environment.unset(\"upgrade_premium_body\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "{{upgrade_premium_apikey}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "credit_card_number",
+									"value": "{{upgrade_premium_credit_card_number}}",
+									"type": "text"
+								},
+								{
+									"key": "expired_month",
+									"value": "{{upgrade_premium_expired_month}}",
+									"type": "text"
+								},
+								{
+									"key": "expired_year",
+									"value": "{{upgrade_premium_expired_year}}",
+									"type": "text"
+								},
+								{
+									"key": "cvc",
+									"value": "{{upgrade_premium_cvc}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/mc/upgrade_premium",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mc",
+								"upgrade_premium"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Voting",
+			"item": [
+				{
+					"name": "making vote",
+					"item": [
+						{
+							"name": "User Make Vote",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "72bab03e-5ee9-4ff8-822d-1f1c8a05240b",
+										"exec": [
+											"data = pm.environment.get(\"make_vote\"); \r",
+											"\r",
+											"pm.sendRequest({\r",
+											"    url: \"localhost:3000/api/MC/login\",\r",
+											"    method: \"POST\",\r",
+											"    body: {\r",
+											"        mode: \"urlencoded\",\r",
+											"        urlencoded: [\r",
+											"            {key:\"email\", value:\"michael.com\", disabled:false},\r",
+											"            {key:\"password\", value:\"1234\", disabled:false}\r",
+											"        ]\r",
+											"    }\r",
+											"}, function (err, response) {\r",
+											"    pm.environment.set(\"make_vote_apikey\", response.text());\r",
+											"});\r",
+											"\r",
+											"if (!data || data.length <= 0) {\r",
+											"    data = [\r",
+											"        {\r",
+											"            \"make_vote_list_id_app\": \"com.hazelfunstudio.icecream.donut.maker,com.fungameco.klondike.solitaire\",\r",
+											"            \"make_vote_judul_vote\": \"Greatest hits 2020\",\r",
+											"            \"make_vote_status_code\": 200,\r",
+											"            \"make_vote_body\": {\r",
+											"                \"message\": \"Vote berhasil dibuat\"\r",
+											"            }\r",
+											"        }\r",
+											"    ]\r",
+											"}\r",
+											"let currentData = data.shift();\r",
+											"pm.environment.set(\"make_vote_list_id_app\", currentData[\"make_vote_list_id_app\"]);\r",
+											"pm.environment.set(\"make_vote_judul_vote\", currentData[\"make_vote_judul_vote\"]);\r",
+											"pm.environment.set(\"make_vote_status_code\", currentData[\"make_vote_status_code\"]);\r",
+											"pm.environment.set(\"make_vote_body\", currentData[\"make_vote_body\"]);\r",
+											"pm.environment.set(\"update_profile\", data);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d4b0a8d8-6387-4760-a1b7-99041f1bcc71",
+										"exec": [
+											"data = pm.environment.get(\"make_vote\");\r",
+											"flag = false;\r",
+											"\r",
+											"if (data && data.length > 0) {\r",
+											"    postman.setNextRequest(\"User Make Vote\");\r",
+											"} else {\r",
+											"    flag = true;\r",
+											"}\r",
+											"\r",
+											"pm.test(\"Status code is correct\", function () {\r",
+											"    pm.response.to.have.status(pm.variables.get(\"make_vote_status_code\"));\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Returned data is correct\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.eql(pm.variables.get(\"make_vote_body\"));\r",
+											"});\r",
+											"\r",
+											"if (flag) {\r",
+											"    pm.environment.unset(\"make_vote_list_id_app\");\r",
+											"    pm.environment.unset(\"make_vote_judul_vote\");\r",
+											"    pm.environment.unset(\"make_vote_status_code\");\r",
+											"    pm.environment.unset(\"make_vote_body\");\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "{{make_vote_apikey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "judul_vote",
+											"value": "{{make_vote_judul_vote}}",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/mc/make_vote?id_app={{make_vote_list_id_app}}",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mc",
+										"make_vote"
+									],
+									"query": [
+										{
+											"key": "id_app",
+											"value": "{{make_vote_list_id_app}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Input_vote",
+					"item": [
+						{
+							"name": "Input Vote User",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0987850d-c04e-4e1a-bd4d-b9faba6fd512",
+										"exec": [
+											"data = pm.environment.get(\"input_vote\"); \r",
+											"\r",
+											"pm.sendRequest({\r",
+											"    url: \"localhost:3000/api/MC/login\",\r",
+											"    method: \"POST\",\r",
+											"    body: {\r",
+											"        mode: \"urlencoded\",\r",
+											"        urlencoded: [\r",
+											"            {key:\"email\", value:\"michael.com\", disabled:false},\r",
+											"            {key:\"password\", value:\"1234\", disabled:false}\r",
+											"        ]\r",
+											"    }\r",
+											"}, function (err, response) {\r",
+											"    pm.environment.set(\"input_vote_apikey\", response.text());\r",
+											"});\r",
+											"\r",
+											"if (!data || data.length <= 0) {\r",
+											"    data = [\r",
+											"        {\r",
+											"            \"input_vote_id_list_vote\": \"18\",\r",
+											"            \"input_vote_indeks_pilihan_vote\": \"2\",\r",
+											"            \"input_vote_status_code\": 200,\r",
+											"            \"input_vote_body\": {\r",
+											"                \"message\": \"Vote anda telah disimpan\"\r",
+											"            }\r",
+											"        }\r",
+											"    ]\r",
+											"}\r",
+											"let currentData = data.shift();\r",
+											"pm.environment.set(\"input_vote_id_list_vote\", currentData[\"input_vote_id_list_vote\"]);\r",
+											"pm.environment.set(\"input_vote_indeks_pilihan_vote\", currentData[\"input_vote_indeks_pilihan_vote\"]);\r",
+											"pm.environment.set(\"input_vote_status_code\", currentData[\"input_vote_status_code\"]);\r",
+											"pm.environment.set(\"input_vote_body\", currentData[\"input_vote_body\"]);\r",
+											"pm.environment.set(\"input_vote\", data);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "82b06ad7-27bd-4400-83e5-f1b56e849a30",
+										"exec": [
+											"data = pm.environment.get(\"input_vote\");\r",
+											"flag = false;\r",
+											"\r",
+											"if (data && data.length > 0) {\r",
+											"    postman.setNextRequest(\"Input Vote User\");\r",
+											"} else {\r",
+											"    flag = true;\r",
+											"}\r",
+											"\r",
+											"pm.test(\"Status code is correct\", function () {\r",
+											"    pm.response.to.have.status(pm.variables.get(\"input_vote_status_code\"));\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Returned data is correct\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.eql(pm.variables.get(\"input_vote_body\"));\r",
+											"});\r",
+											"\r",
+											"if (flag) {\r",
+											"    pm.environment.unset(\"input_vote_id_list_app\");\r",
+											"    pm.environment.unset(\"input_vote_indeks_pilihan_vote\");\r",
+											"    pm.environment.unset(\"input_vote_status_code\");\r",
+											"    pm.environment.unset(\"input_vote_body\");\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "{{input_vote_apikey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/mc/input_vote",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mc",
+										"input_vote"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "get_ranking_vote",
+					"item": [
+						{
+							"name": "User Get Ranking",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "66c84f9a-03c0-4fc3-b246-984e827fb8fb",
+										"exec": [
+											"data = pm.environment.get(\"get_ranking\"); \r",
+											"\r",
+											"if (!data || data.length <= 0) {\r",
+											"    data = [\r",
+											"        {\r",
+											"            \"get_ranking_id_list_vote\": 18,\r",
+											"            \"get_ranking_status_code\": 200,\r",
+											"            \"get_ranking_body\": {\r",
+											"                \"message\": \"Vote anda telah disimpan\"\r",
+											"            }\r",
+											"        }\r",
+											"    ]\r",
+											"}\r",
+											"let currentData = data.shift();\r",
+											"pm.environment.set(\"get_ranking_id_list_vote\", currentData[\"get_ranking_id_list_vote\"]);\r",
+											"pm.environment.set(\"get_ranking_status_code\", currentData[\"get_ranking_status_code\"]);\r",
+											"pm.environment.set(\"get_ranking_body\", currentData[\"get_ranking_body\"]);\r",
+											"pm.environment.set(\"get_ranking\", data);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0db3d02a-3cbf-46f7-99f8-632ffbf6a2b0",
+										"exec": [
+											"data = pm.environment.get(\"get_ranking\");\r",
+											"flag = false;\r",
+											"\r",
+											"if (data && data.length > 0) {\r",
+											"    postman.setNextRequest(\"User Get Ranking\");\r",
+											"} else {\r",
+											"    flag = true;\r",
+											"}\r",
+											"\r",
+											"pm.test(\"Status code is correct\", function () {\r",
+											"    pm.response.to.have.status(pm.variables.get(\"get_ranking_status_code\"));\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Returned data is correct\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.eql(pm.variables.get(\"get_ranking_body\"));\r",
+											"});\r",
+											"\r",
+											"if (flag) {\r",
+											"    pm.environment.unset(\"get_ranking_id_list_vote\");\r",
+											"    pm.environment.unset(\"get_ranking_status_code\");\r",
+											"    pm.environment.unset(\"get_ranking_body\");\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id_list_vote",
+											"value": "{{get_ranking_id_list_vote}}",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/mc/get_ranking_vote",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mc",
+										"get_ranking_vote"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

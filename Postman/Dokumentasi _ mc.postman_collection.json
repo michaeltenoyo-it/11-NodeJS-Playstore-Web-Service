@@ -1,0 +1,583 @@
+{
+	"info": {
+		"_postman_id": "cf0f3b10-a450-4e48-b5ca-e62f8fd09efb",
+		"name": "Dokumentasi _ mc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login/Register",
+			"item": [
+				{
+					"name": "User Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d69abec3-26c3-47aa-a22f-f9e7eab37406",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fbab2c51-35bf-4548-a479-e2d14565f362",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "Mike",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "michael123@mail.com",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/mc/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mc",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4025097a-69c8-42cd-ac1a-91a64ad333f9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b4aab74-76ad-45d8-bb3f-5b9d850aa161",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "michael.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/mc/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mc",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "User Update Profile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e294c0a7-98d1-403f-a753-74f659329988",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec007317-0fdf-421f-8cc7-9a7b13aac7bf",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pY2hhZWwuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MTU0NDQwOSwiZXhwIjoxNTkxNTQ4MDA5fQ.eFlvoqU06SUSGxifUhaH9wS7H_jHE-qb8w0egxXJO5I"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "michael.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/michael/Pictures/30990-cddvd-hatsune-miku-magical-mirai-2019-official-album-limited-edition.jpg"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/mc/update_profile",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mc",
+								"update_profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Upgrade Premium",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "40304b96-3564-4c72-bd82-281c954ffb7b",
+								"exec": [
+									"data = pm.environment.get(\"upgrade_premium\"); \r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: \"localhost:3000/api/MC/login\",\r",
+									"    method: \"POST\",\r",
+									"    body: {\r",
+									"        mode: \"urlencoded\",\r",
+									"        urlencoded: [\r",
+									"            {key:\"email\", value:\"michael.com\", disabled:false},\r",
+									"            {key:\"password\", value:\"1234\", disabled:false}\r",
+									"        ]\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    pm.environment.set(\"upgrade_premium_apikey\", response.text());\r",
+									"});\r",
+									"\r",
+									"if (!data || data.length <= 0) {\r",
+									"    data = [\r",
+									"        {\r",
+									"            \"upgrade_premium_credit_card_number\": \"4242424242424242\",\r",
+									"            \"upgrade_premium_expired_month\": \"5\",\r",
+									"            \"upgrade_premium_expired_year\": \"2021\",\r",
+									"            \"upgrade_premium_cvc\": \"314\",\r",
+									"            \"upgrade_premium_status_code\": 200,\r",
+									"            \"upgrade_premium_body\": {\r",
+									"                \"message\": \"Pembayaran telah berhasil dilakukan, anda telah menjadi premium member\"\r",
+									"            }\r",
+									"        },\r",
+									"        {\r",
+									"            \"upgrade_premium_credit_card_number\": \"4242424242424242\",\r",
+									"            \"upgrade_premium_expired_month\": \"5\",\r",
+									"            \"upgrade_premium_expired_year\": \"2021\",\r",
+									"            \"upgrade_premium_cvc\": \"314\",\r",
+									"            \"upgrade_premium_status_code\": 404,\r",
+									"            \"upgrade_premium_body\": {\r",
+									"                \"message\": \"user dengan email tersebut tidak ditemukan\"\r",
+									"            }\r",
+									"        }\r",
+									"    ]\r",
+									"}\r",
+									"let currentData = data.shift();\r",
+									"pm.environment.set(\"upgrade_premium_credit_card_number\", currentData[\"upgrade_premium_credit_card_number\"]);\r",
+									"pm.environment.set(\"upgrade_premium_expired_month\", currentData[\"upgrade_premium_expired_month\"]);\r",
+									"pm.environment.set(\"upgrade_premium_expired_year\", currentData[\"upgrade_premium_expired_year\"]);\r",
+									"pm.environment.set(\"upgrade_premium_cvc\", currentData[\"upgrade_premium_cvc\"]);\r",
+									"pm.environment.set(\"upgrade_premium_status_code\", currentData[\"upgrade_premium_status_code\"]);\r",
+									"pm.environment.set(\"upgrade_premium_body\", currentData[\"upgrade_premium_body\"]);\r",
+									"pm.environment.set(\"upgrade_premium\", data);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f128c1f4-0332-4320-b515-7192946f7ed4",
+								"exec": [
+									"data = pm.environment.get(\"upgrade_premium\");\r",
+									"flag = false;\r",
+									"\r",
+									"if (data && data.length > 0) {\r",
+									"    postman.setNextRequest(\"User Upgrade Premium\");\r",
+									"} else {\r",
+									"    flag = true;\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is correct\", function () {\r",
+									"    pm.response.to.have.status(pm.variables.get(\"upgrade_premium_status_code\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Returned data is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.eql(pm.variables.get(\"upgrade_premium_body\"));\r",
+									"});\r",
+									"\r",
+									"if (flag) {\r",
+									"    pm.environment.unset(\"upgrade_premium_credit_card_number\");\r",
+									"    pm.environment.unset(\"upgrade_premium_expired_month\");\r",
+									"    pm.environment.unset(\"upgrade_premium_expired_year\");\r",
+									"    pm.environment.unset(\"upgrade_premium_cvc\");\r",
+									"    pm.environment.unset(\"upgrade_premium_status_code\");\r",
+									"    pm.environment.unset(\"upgrade_premium_body\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "{{upgrade_premium_apikey}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "credit_card_number",
+									"value": "{{upgrade_premium_credit_card_number}}",
+									"type": "text"
+								},
+								{
+									"key": "expired_month",
+									"value": "{{upgrade_premium_expired_month}}",
+									"type": "text"
+								},
+								{
+									"key": "expired_year",
+									"value": "{{upgrade_premium_expired_year}}",
+									"type": "text"
+								},
+								{
+									"key": "cvc",
+									"value": "{{upgrade_premium_cvc}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/mc/upgrade_premium",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mc",
+								"upgrade_premium"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Voting",
+			"item": [
+				{
+					"name": "making vote",
+					"item": [
+						{
+							"name": "localhost:3000/api/mc/make_vote?id_app=com.hazelfunstudio.icecream.donut.maker,com.fungameco.klondike.solitaire",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MDc0NjYwMSwiZXhwIjoxNTkwNzUwMjAxfQ.mkmPPQyBIjeQLoO-60GiliYHgsaGUnlh9WWmwae-lls",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"judul_vote\" : \"Anime greatest hits\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/mc/make_vote?id_app=com.hazelfunstudio.icecream.donut.maker,com.fungameco.klondike.solitaire",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mc",
+										"make_vote"
+									],
+									"query": [
+										{
+											"key": "id_app",
+											"value": "com.hazelfunstudio.icecream.donut.maker,com.fungameco.klondike.solitaire"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Input_vote",
+					"item": [
+						{
+							"name": "localhost:3000/api/mc/input_vote",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBvcG8uY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MDc1NTcyMCwiZXhwIjoxNTkwNzU5MzIwfQ.C1VsH6BnWVLkxsd0iDVr9vvZAjBnEahzV3_TH4g0-RY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id_list_vote\" : 18,\n\t\"indeks_pilihan_vote\" : 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/mc/input_vote",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mc",
+										"input_vote"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "get_ranking_vote",
+					"item": [
+						{
+							"name": "User Get Ranking",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b406120d-c5ed-4eab-b559-9e6e4024085c",
+										"exec": [
+											"data = pm.environment.get(\"get_ranking\"); \r",
+											"\r",
+											"if (!data || data.length <= 0) {\r",
+											"    data = [\r",
+											"        {\r",
+											"            \"get_ranking_id_list_vote\": \"18\",\r",
+											"            \"get_ranking_status_code\": 200,\r",
+											"            \"get_ranking_body\": {\r",
+											"                \"message\": \"Vote anda telah disimpan\"\r",
+											"            }\r",
+											"        }\r",
+											"    ]\r",
+											"}\r",
+											"let currentData = data.shift();\r",
+											"pm.environment.set(\"get_ranking_id_list_vote\", currentData[\"get_ranking_id_list_vote\"]);\r",
+											"pm.environment.set(\"get_ranking_status_code\", currentData[\"get_ranking_status_code\"]);\r",
+											"pm.environment.set(\"get_ranking_body\", currentData[\"get_ranking_body\"]);\r",
+											"pm.environment.set(\"get_ranking\", data);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "542f23af-4984-45aa-92c9-3e633661f7d3",
+										"exec": [
+											"data = pm.environment.get(\"get_ranking\");\r",
+											"flag = false;\r",
+											"\r",
+											"if (data && data.length > 0) {\r",
+											"    postman.setNextRequest(\"User Get Ranking\");\r",
+											"} else {\r",
+											"    flag = true;\r",
+											"}\r",
+											"\r",
+											"pm.test(\"Status code is correct\", function () {\r",
+											"    pm.response.to.have.status(pm.variables.get(\"get_ranking_status_code\"));\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Returned data is correct\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.eql(pm.variables.get(\"get_ranking_body\"));\r",
+											"});\r",
+											"\r",
+											"if (flag) {\r",
+											"    pm.environment.unset(\"get_ranking_id_list_vote\");\r",
+											"    pm.environment.unset(\"get_ranking_status_code\");\r",
+											"    pm.environment.unset(\"get_ranking_body\");\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id_list_vote",
+											"value": "{{get_ranking_id_list_vote}}",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/mc/get_ranking_vote",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mc",
+										"get_ranking_vote"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

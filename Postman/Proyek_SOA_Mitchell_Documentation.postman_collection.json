@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "d363f0ff-187a-484e-9317-ddc32eb55d5c",
+		"name": "Proyek_SOA_Mitchell_Documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "WIshlist",
+			"item": [
+				{
+					"name": "Show Wishlist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5529493b-ec71-49af-b022-2d282fdc0dcf",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6ca1fde6-8647-4d1b-b154-ddbf82485f94",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MTU0NTc3MywiZXhwIjoxNTkxNTQ5MzczfQ.juUA0dbNQzOoALTbwfEHQ0uVh7fHYaUCtB17iXP7LRc"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/mitchell/wishlist",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mitchell",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Wishlist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "594f253c-3abf-4943-a542-b770fe2dfa91",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "003f5b04-bbcb-47c9-aec0-aee5f216f913",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MTU0NTg3MiwiZXhwIjoxNTkxNTQ5NDcyfQ.7XfMFD5sv22T2tF23pAWZ5OXiQgK6tyxF61bxS9cwRo"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "app_id",
+									"value": "com.radiosonline.sverigeradiofm",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/mitchell/wishlist",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mitchell",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Wishlist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "70ea153f-78d2-4a82-8dd9-efe296fa3c5e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1e1ccd7c-ad28-481d-ae8d-de40c41b4209",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MTU0NTg3MiwiZXhwIjoxNTkxNTQ5NDcyfQ.7XfMFD5sv22T2tF23pAWZ5OXiQgK6tyxF61bxS9cwRo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "app_id",
+									"value": "com.radiosonline.sverigeradiofm",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/mitchell/wishlist",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mitchell",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Application",
+			"item": [
+				{
+					"name": "Get App Detail",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bc7acc64-c0e2-402a-8b3a-2f57420daa18",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9349d22a-e1d9-4297-9db9-b00c7880fbac",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"KTU IF lecture schedule\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should have publisher name MIK apps\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.publisher_name).to.eql(\"MIK apps\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2UuY29tIiwibGV2ZWwiOjEsImlhdCI6MTU5MDY0ODQ3NCwiZXhwIjoxNTkwNjUyMDc0fQ.hkV6lL6QGfnoG_GePY8uWnRbECy44CZExN1dSKSl4XM",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "app_id",
+									"value": "com.ktucalender",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/mitchell/app?app_id=com.ktucalender",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mitchell",
+								"app"
+							],
+							"query": [
+								{
+									"key": "app_id",
+									"value": "com.ktucalender"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
